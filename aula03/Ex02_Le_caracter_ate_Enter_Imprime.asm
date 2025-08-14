@@ -46,7 +46,7 @@
 ; PROTECAO CONTRA OVERFLOW
 ; - O buffer tem 120 bytes. Usamos ate o indice 119 para dados e reservamos
 ;   1 byte final para o '$'. Logo, quando SI chegar a 119, paramos de ler. 
-;O ? significa �sem inicializacao� (valor indefinido em tempo de execucao).
+;O ? significa “sem inicializacao” (valor indefinido em tempo de execucao).
 
 ;db 120 dup(?) cria 120 bytes de espaco no segmento de dados, 
 ;sem gravar nenhum valor neles no arquivo objeto.
@@ -90,7 +90,7 @@ read_loop:
     mov ah, 01h                    ; // AH=01h -> ler 1 caractere (com eco)
     int 21h                        ; // AL = caractere ASCII
     cmp al, 13                     ; // ENTER? (ASCII 13 = CR)
-    je  finish_read                ; // se sim, sai do laco
+    je  finish_read                ; // se sim, sai do laco, je significa Jump if Equal — “salta se for igual”.
 
     mov buf[si], al                ; // armazena caractere no buffer
     inc si                         ; // avanca o indice
@@ -119,3 +119,4 @@ finish_read:
 
 main endp
 end main
+
